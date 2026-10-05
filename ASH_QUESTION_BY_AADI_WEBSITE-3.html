@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>ASH QUESTION BY AADI</title>
+<style>
+*{box-sizing:border-box}
+:root{--bg:#07070b;--card:rgba(20,20,29,.78);--text:#f7f7fb;--muted:#999aaa;--purple:#9b5cff;--blue:#3d8bff;--pink:#ff4f9a}
+body{margin:0;min-height:100vh;background:radial-gradient(circle at 15% 10%,#32115b 0,transparent 32%),radial-gradient(circle at 90% 85%,#092e62 0,transparent 32%),var(--bg);color:var(--text);font-family:Inter,Arial,sans-serif;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;background-image:radial-gradient(rgba(255,255,255,.11) 1px,transparent 1px);background-size:30px 30px;opacity:.25}
+.glow{position:fixed;width:300px;height:300px;border-radius:50%;filter:blur(100px);opacity:.2;pointer-events:none;background:var(--purple);animation:float 8s infinite alternate ease-in-out}.g1{top:-100px;left:-90px}.g2{right:-100px;bottom:-100px;background:var(--blue);animation-delay:-4s}
+.wrap{width:min(92%,900px);margin:auto;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:28px 0}
+.screen{width:100%;display:none;animation:in .5s ease}.screen.active{display:block}
+.nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}.logo{font-weight:900;letter-spacing:2px;font-size:14px}.domain{font-size:11px;color:#737586}
+.hero{text-align:center;padding:20px 0 28px}.badge{display:inline-block;padding:8px 13px;border:1px solid #ffffff20;border-radius:99px;background:#ffffff08;color:#c7b2ff;font-size:11px;letter-spacing:2px}
+h1{font-size:clamp(40px,10vw,76px);line-height:.95;margin:20px 0 14px;letter-spacing:-3px;background:linear-gradient(90deg,#fff,#c9a7ff,#74aaff);-webkit-background-clip:text;color:transparent}
+.subtitle{color:var(--muted);max-width:570px;margin:auto;line-height:1.6;font-size:15px}
+.card{border:1px solid #ffffff16;background:var(--card);backdrop-filter:blur(20px);border-radius:28px;padding:28px;box-shadow:0 25px 70px #0009}
+.choices{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.choice{min-height:190px;text-align:left;border:1px solid #ffffff15;border-radius:22px;background:linear-gradient(145deg,#ffffff0b,#ffffff03);padding:25px;color:white;cursor:pointer;transition:.25s;position:relative;overflow:hidden}
+.choice:hover{transform:translateY(-7px);border-color:#ffffff35;box-shadow:0 18px 45px #0008}.choice h2{margin:12px 0 8px}.choice p{color:#9b9dac;font-size:13px;line-height:1.5}.emoji{font-size:34px}
+.select{width:100%;padding:16px 17px;border-radius:15px;border:1px solid #ffffff18;background:#08080d;color:white;font-size:16px;outline:none}.select:focus{border-color:#8e61ff;box-shadow:0 0 0 3px #8e61ff22}input{width:100%;padding:16px 17px;border-radius:15px;border:1px solid #ffffff18;background:#08080d;color:white;font-size:16px;outline:none;margin:15px 0}input:focus{border-color:#8e61ff;box-shadow:0 0 0 3px #8e61ff22}
+.btn{border:0;border-radius:15px;padding:15px 21px;font-weight:900;cursor:pointer;color:white;background:linear-gradient(135deg,var(--purple),var(--blue));box-shadow:0 10px 28px #5130aa55;transition:.2s}.btn:hover{transform:translateY(-3px);filter:brightness(1.08)}.back{background:#ffffff0c;box-shadow:none;margin-right:8px}
+.center{text-align:center}.small{color:#777;font-size:12px;margin-top:15px}
+.qtop{display:flex;justify-content:space-between;color:#858796;font-size:11px;letter-spacing:1px;margin-bottom:20px}.question{font-size:clamp(23px,5vw,34px);line-height:1.35;text-align:center;min-height:130px;display:flex;align-items:center;justify-content:center}
+.answers{display:flex;gap:15px;justify-content:center;position:relative;min-height:70px}.ans{min-width:130px}.yes{background:linear-gradient(135deg,#ff3867,#c51848)}.no{background:linear-gradient(135deg,#287fff,#1649bf)}
+.reaction{text-align:center;height:28px;color:#bcbecb;font-size:13px;margin-top:12px}
+.bar{height:4px;background:#ffffff0d;border-radius:99px;margin-top:20px;overflow:hidden}.bar span{display:block;height:100%;background:linear-gradient(90deg,var(--pink),var(--purple),var(--blue));transition:.4s}
+.finish{text-align:center}.finish .big{font-size:65px}.finish h2{font-size:38px;margin:8px 0}.finish p{color:#999;line-height:1.6}
+@keyframes in{from{opacity:0;transform:translateY(18px) scale(.98)}to{opacity:1;transform:none}}@keyframes float{to{transform:translate(70px,55px) scale(1.2)}}
+@media(max-width:650px){.choices{grid-template-columns:1fr}.choice{min-height:145px}.card{padding:22px}.answers{gap:10px}.ans{min-width:115px}}
+</style>
+</head>
+<body>
+<div class="glow g1"></div><div class="glow g2"></div>
+<div class="wrap">
+
+<section class="screen active" id="home">
+<div class="nav"><div class="logo">ASH QUESTION BY AADI</div><div class="domain">.com • QUIZ LAB</div></div>
+<div class="hero"><span class="badge">WELCOME TO THE RAGEBAIT LAB</span><h1>ASH QUESTION<br>BY AADI</h1><p class="subtitle">A fun little quiz generator for birthdays, cousins, friends and absolutely unnecessary roasting. 😈</p></div>
+<div class="card"><div class="choices">
+<div class="choice" onclick="startBirthday()"><div class="emoji">🎂</div><h2>Birthday</h2><p>Create a personalized birthday quiz for your friend, cousin, bestie or sibling.</p></div>
+<div class="choice" onclick="startRoast()"><div class="emoji">🔥</div><h2>Roasting</h2><p>Enter someone's name and unleash a completely unnecessary ragebait test.</p></div>
+</div></div>
+</section>
+
+<section class="screen" id="setup">
+<div class="nav"><div class="logo">ASH QUESTION BY AADI</div><div id="modeLabel" class="domain"></div></div>
+<div class="card">
+<div class="center"><div class="emoji" id="setupEmoji">🎯</div><h2 id="setupTitle">Who is this for?</h2><p class="subtitle" id="setupDesc">Choose the relation and gender so the questions fit better.</p></div>
+<input id="target" maxlength="30" placeholder="Enter name...">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+<select id="relation" class="select"><option value="">Relation</option><option value="cousin">Cousin</option><option value="sibling">Sibling</option><option value="brother">Brother</option><option value="sister">Sister</option></select>
+<select id="gender" class="select"><option value="">Gender</option><option value="male">Boy</option><option value="female">Girl</option></select>
+</div>
+<div class="center" style="margin-top:16px"><button class="btn back" onclick="show('home')">← BACK</button><button class="btn" onclick="makeQuiz()">CREATE QUIZ →</button></div>
+<div class="small">No account • No signup • Just send the quiz to your victim 😭</div>
+</div>
+</section>
+
+<section class="screen" id="quiz">
+<div class="nav"><div class="logo">ASH QUESTION BY AADI</div><div class="domain" id="quizType"></div></div>
+<div class="card">
+<div class="qtop"><span id="qnum">QUESTION 1</span><span id="qname"></span></div>
+<div class="question" id="question"></div>
+<div class="answers"><button class="btn yes ans" id="yes">YES</button><button class="btn no ans" id="no">NO</button></div>
+<div class="reaction" id="reaction"></div>
+<div class="bar"><span id="bar"></span></div>
+</div>
+</section>
+
+<section class="screen" id="finish">
+<div class="card finish"><div class="big">💀</div><h2 id="finishTitle">QUIZ COMPLETE</h2><p id="finishText"></p><button class="btn" onclick="location.reload()">PLAY AGAIN</button></div>
+</section>
+</div>
+
+<script>
+let mode="",name="",i=0,locked=false;
+const birthday=[
+["Kya tumhe lagta hai birthday par sabse zyada attention tum deserve karte ho?",true],
+["Kya tum apne birthday par extra nakhre karte ho?",true],
+["Kya tum gift dekhne se pehle uski price guess karte ho?",false],
+["Kya tum birthday wishes mein spelling mistakes notice karte ho?",true],
+["Kya tum cake ka sabse bada piece secretly chahte ho?",true],
+["Kya tum maanoge ki tumhare bina bhi party chal sakti hai?",false],
+["Kya birthday ke din tum normal se zyada dramatic ho jaate ho?",true],
+["Kya tumhe surprise milne ka wait already hota hai?",true]
+];
+
+const questionSets={
+female:{
+cousin:[
+["Kya tujhe lagta hai tu family ki favourite cousin hai?",false],
+["Kya tu bina attitude dikhaye poora din nikaal sakti hai?",false],
+["Kya har argument mein galti saamne wale ki hi hoti hai?",false],
+["Kya tera “mujhe farak nahi padta” actually sach hota hai?",false],
+["Kya tu apne cousins mein sabse zyada drama karti hai?",true],
+["Kya tu kabhi kisi ki baat bina beech mein tokke sun leti hai?",false],
+["Kya tujhe lagta hai tera attitude actually cute hai?",false],
+["Kya tu secretly sabki attention chahti hai?",true],
+["Kya tu apni galti pakde jaane par turant maan leti hai?",false],
+["FINAL: Kya tu officially family ki sabse unpredictable cousin hai?",true]
+],
+sibling:[
+["Kya tu ghar mein sabse zyada drama create karti hai?",true],
+["Kya tu apne sibling ki cheezein bina permission use karti hai?",true],
+["Kya tu argument ke baad bhi last word chahti hai?",true],
+["Kya tu apni galti pakde jaane par excuse ready rakhti hai?",true],
+["Kya tu sibling ko irritate karke innocent face bana leti hai?",true],
+["Kya tu maanta hai ki ghar mein tera mood weather forecast hai?",true],
+["Kya tu apne sibling ki advice actually follow karti hai?",false],
+["FINAL: Kya tu ghar ki official troublemaker hai?",true]
+]
+},
+male:{
+cousin:[
+["Kya tujhe lagta hai tu family ka favourite cousin hai?",false],
+["Kya tu bina bakchodi kiye poora din nikaal sakta hai?",false],
+["Kya har argument mein galti saamne wale ki hi hoti hai?",false],
+["Kya tu family functions mein sabse zyada shor karta hai?",true],
+["Kya tu apni galti pakde jaane par turant maan leta hai?",false],
+["Kya tu secretly sabki attention chahta hai?",true],
+["Kya tu 'mujhe farak nahi padta' bolkar actually farak nahi padne deta?",false],
+["FINAL: Kya tu family ka official nuisance cousin hai?",true]
+],
+sibling:[
+["Kya tu ghar mein sabse zyada bakchodi karta hai?",true],
+["Kya tu apne sibling ki cheezein bina permission use karta hai?",true],
+["Kya tu argument ke baad last word apna chahta hai?",true],
+["Kya tu apni galti ke liye excuse ready rakhta hai?",true],
+["Kya tu sibling ko irritate karke innocent face bana leta hai?",true],
+["Kya tu apne sibling se secretly compete karta hai?",true],
+["FINAL: Kya tu ghar ka official troublemaker hai?",true]
+]
+}
+};
+function show(id){document.querySelectorAll(".screen").forEach(x=>x.classList.remove("active"));document.getElementById(id).classList.add("active")}
+function startBirthday(){mode="birthday";document.getElementById("relation").value="";document.getElementById("gender").value="";document.getElementById("modeLabel").textContent="BIRTHDAY MODE";document.getElementById("setupEmoji").textContent="🎂";document.getElementById("setupTitle").textContent="Kis ke liye hai?";document.getElementById("setupDesc").textContent="Friend, best friend, bhai, bhn, cousin… naam daal aur quiz bana.";document.getElementById("target").placeholder="e.g. Kirti";show("setup")}
+function startRoast(){mode="roast";document.getElementById("modeLabel").textContent="ROASTING MODE";document.getElementById("setupEmoji").textContent="🔥";document.getElementById("setupTitle").textContent="Kiski roasting karni hai?";document.getElementById("setupDesc").textContent="Naam daal. Baaki ka kaam ragebait karega. 😈";document.getElementById("target").placeholder="e.g. Kirti";show("setup")}
+function makeQuiz(){
+name=document.getElementById("target").value.trim();
+const rel=document.getElementById("relation").value, gen=document.getElementById("gender").value;
+if(!name){document.getElementById("target").focus();return}
+if(mode==="roast" && !["cousin","sibling","brother","sister"].includes(rel)){
+document.getElementById("reject").style.display="flex"; return;
+}
+if(mode==="roast" && !gen){alert("Gender select karo 😈");return}
+i=0; window.currentRelation=(rel==="brother"||rel==="sister")?"sibling":rel; window.currentGender=gen;
+document.getElementById("quizType").textContent=mode==="roast"?rel.toUpperCase()+" • ROASTING":"BIRTHDAY MODE";
+document.getElementById("qname").textContent=name.toUpperCase();show("quiz");render()
+}
+function speak(t){try{speechSynthesis.cancel();let u=new SpeechSynthesisUtterance(t);u.lang="hi-IN";u.rate=.95;speechSynthesis.speak(u)}catch(e){}}
+function render(){locked=false;let arr=mode==="roast"?(questionSets[window.currentGender]?.[window.currentRelation]||questionSets[window.currentGender].cousin):birthday;let item=arr[i];document.getElementById("question").textContent=(mode==="roast"?name+", ":"")+item[0];document.getElementById("qnum").textContent="QUESTION "+(i+1)+" / "+arr.length;document.getElementById("reaction").textContent="";document.getElementById("bar").style.width=((i)/arr.length*100)+"%";let a=Math.random()>.5;document.getElementById("yes").style.order=a?1:0;document.getElementById("no").style.order=a?0:1}
+function answer(choice){if(locked)return;let arr=mode==="roast"?(questionSets[window.currentGender]?.[window.currentRelation]||questionSets[window.currentGender].cousin):birthday,correct=arr[i][1];if(choice!==correct){let r=["Nahi nahi 😭 wrong answer.","Soch le dobara 💀","Ye button allowed nahi hai.","Caught in 4K 😂"];document.getElementById("reaction").textContent=r[Math.floor(Math.random()*r.length)];speak(document.getElementById("reaction").textContent);return}locked=true;document.getElementById("reaction").textContent=["Answer accepted 😭","System ne maan liya.","Interesting choice 💀"][Math.floor(Math.random()*3)];speak(document.getElementById("reaction").textContent);setTimeout(()=>{i++;if(i>=arr.length){document.getElementById("finishTitle").textContent=mode==="roast"?name.toUpperCase()+" GOT COOKED 🔥":"BIRTHDAY TEST COMPLETE 🎂";document.getElementById("finishText").textContent=mode==="roast"?"Congratulations. Ragebait successfully completed.":"Quiz complete. Ab birthday wishes ka asli scene shuru.";show("finish")}else render()},850)}
+document.getElementById("yes").onclick=()=>answer(true);document.getElementById("no").onclick=()=>answer(false);
+function closeReject(){document.getElementById("reject").style.display="none"}
+</script>
+<div id="reject" style="display:none;position:fixed;inset:0;z-index:99;background:radial-gradient(circle at center,#30104f,#050507 70%);align-items:center;justify-content:center;text-align:center;padding:25px">
+<div style="max-width:600px;animation:in .5s ease">
+<div style="font-size:80px">🚨💀🚨</div>
+<h1 style="font-size:clamp(34px,8vw,64px);margin:10px 0;color:#fff">OYE RUK JAA!</h1>
+<h2 style="font-size:clamp(20px,5vw,32px);color:#ff6aa8">YE NAHI HO PAYEGAA 😭</h2>
+<p style="font-size:17px;color:#aaa;line-height:1.7">Yahan sirf <b style="color:#fff">COUSIN • SIBLING • BROTHER • SISTER</b><br>ke liye hi space hai.</p>
+<p style="font-size:14px;color:#777">ASH QUESTION BY AADI ne tumhari entry reject kar di 💀</p>
+<button class="btn" onclick="closeReject()">← WAPAS JAO</button>
+</div></div></body>
+</html>
